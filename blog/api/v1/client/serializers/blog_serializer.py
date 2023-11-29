@@ -19,6 +19,8 @@ class CategorySerializer(serializers.ModelSerializer):
         ]
 
 class ArticleSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+    
     class Meta:
         model = Article
         fields = [
@@ -30,8 +32,11 @@ class ArticleSerializer(serializers.ModelSerializer):
         ]
 
 class CommentsSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    article = ArticleSerializer()
+    
     class Meta:
-        model = Comment
+        model = Comments
         fields = [
             'id', 
             'text', 
@@ -42,7 +47,7 @@ class CommentsSerializer(serializers.ModelSerializer):
         
 class TagsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = Tags
         fields = [
             'id', 
             'tag_name'
