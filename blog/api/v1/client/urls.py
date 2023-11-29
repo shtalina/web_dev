@@ -1,5 +1,6 @@
 from django.urls import path, include
-from rest_framework import routers
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
 from api.v1.client.views import UserViewSet, ArticleViewSet, CommentsViewSet, CategoryViewSet, TagsViewSet
 
 
