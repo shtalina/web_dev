@@ -15,6 +15,13 @@ class CommentsViewSet(viewsets.ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentSerializer
 
+    def get_queryset(self):
+        article_id = self.request.query_params.get('article', None)
+        if article_id is not None:
+            return Comments.objects.filter(article=article_id)
+        else:
+            return Comments.objects.all()
+
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
