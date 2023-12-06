@@ -19,7 +19,6 @@ class CategorySerializer(serializers.ModelSerializer):
         ]
 
 class ArticleSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
     
     class Meta:
         model = Article
@@ -32,9 +31,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         ]
 
 class CommentsSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-    article = ArticleSerializer()
-    
+
     class Meta:
         model = Comments
         fields = [
