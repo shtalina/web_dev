@@ -7,7 +7,7 @@ from api.v1.client.views import UserViewSet, ArticleViewSet, CommentsViewSet, Ca
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'articles', ArticleViewSet)
-router.register(r'comments', CommentsViewSet)
+router.register(r'comments', CommentsViewSet, basename='comment')
 router.register(r'categories', CategoryViewSet)
 
 urlpatterns = [
