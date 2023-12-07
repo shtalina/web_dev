@@ -18,17 +18,6 @@ class CategorySerializer(serializers.ModelSerializer):
             'description'
         ]
 
-class ArticleSerializer(serializers.ModelSerializer):
-    comments = CommentsSerializer(many=True, read_only=True)
-    class Meta:
-        model = Article
-        fields = [
-            'id', 
-            'title', 
-            'text', 
-            'created_at',
-            'category'
-        ]
 
 class CommentsSerializer(serializers.ModelSerializer):
 
@@ -41,6 +30,20 @@ class CommentsSerializer(serializers.ModelSerializer):
             'user', 
             'article'
         ]
+
+class ArticleSerializer(serializers.ModelSerializer):
+    comments = CommentsSerializer(many=True, read_only=True)
+    class Meta:
+        model = Article
+        fields = [
+            'id', 
+            'title', 
+            'text', 
+            'created_at',
+            'category',
+            'comments'
+        ]
+
         
 class TagsSerializer(serializers.ModelSerializer):
     class Meta:
