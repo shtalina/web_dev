@@ -19,7 +19,7 @@ class CategorySerializer(serializers.ModelSerializer):
         ]
 
 class ArticleSerializer(serializers.ModelSerializer):
-    
+    comments = CommentsSerializer(many=True, read_only=True)
     class Meta:
         model = Article
         fields = [
