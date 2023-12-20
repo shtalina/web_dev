@@ -1,6 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from api.v1.client.serializers.blog_serializer import UserSerializer, ArticleSerializer, CommentsSerializer, CategorySerializer
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, mixins, authentication, permissions
 from main.models import User, Article, Comments, Category
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -35,4 +35,11 @@ class CommentsViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+class ArticleManageViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    filterset_fields = ['category', 'published']
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
 
