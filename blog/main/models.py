@@ -10,6 +10,7 @@ class User(models.Model):
 class Category(models.Model):
     category_name = models.CharField(max_length=255, db_index=True, unique=True)
     description = models.TextField()
+    count=models.IntegerField(null=True)
 
     def __str__(self):
         return f'{self.pk} - {self.category_name}'
