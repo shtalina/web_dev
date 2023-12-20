@@ -45,7 +45,7 @@ class ArticleManageViewSet(viewsets.ModelViewSet):
 class CategoryManageViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    filterset_fields = ['article']
+    filterset_fields = ['name', 'article']
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
@@ -53,6 +53,6 @@ class CategoryManageViewSet(viewsets.ModelViewSet):
 class CommentsManageViewSet(viewsets.ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializer
-    filterset_fields = ['article']
+    filterset_fields = ['article', 'created_at']
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
